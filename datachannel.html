@@ -10,9 +10,9 @@
     var chatInput = document.getElementById('chat-input');
     var fileProgress = document.getElementById('file-progress');
     var channel = new DataChannel('Session Unique Identifier');
-  channel.onopen = function(userid) {
+
+    channel.onopen = function(userid) {
         chatInput.disabled = false;
-        chatInput.value = 'Hi, ' + userid;
         chatInput.focus();
     };
 
