@@ -9,17 +9,8 @@
     var chatOutput = document.getElementById('chat-output');
     var chatInput = document.getElementById('chat-input');
     var fileProgress = document.getElementById('file-progress');
-    $(chatInput).change(function(e) {
-        channel.send(this.files[0]);
-        chatOutput.innerHTML = 'sending file..';
-    });
-</script>
-
-<script>
-
     var channel = new DataChannel('Session Unique Identifier');
-
-    channel.onopen = function(userid) {
+  channel.onopen = function(userid) {
         chatInput.disabled = false;
         chatInput.value = 'Hi, ' + userid;
         chatInput.focus();
@@ -38,4 +29,15 @@
       fileProgress.innerHtml = fileProgress.innerHtml + '.';
     };
 
+    $(chatInput).change(function(e) {
+        channel.send(this.files[0]);
+        chatOutput.innerHTML = 'sending file..';
+    });
+</script>
+
+<script>
+
+  
+
+  
 </script>
