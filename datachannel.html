@@ -1,17 +1,15 @@
 <script src="//cdn.webrtc-experiment.com/DataChannel.js"> </script>
 
-<input type="text" id="chat-input" disabled 
+<input type="file" id="chat-input" 
        style="font-size: 2em; width: 98%;"><br />
 <div id="chat-output"></div>
 
 <script>
     var chatOutput = document.getElementById('chat-output');
     var chatInput = document.getElementById('chat-input');
-    chatInput.onkeypress = function(e) {
-        if (e.keyCode != 13) return;
-        channel.send(this.value);
-        chatOutput.innerHTML = 'Me: ' + this.value + '<hr />' 
-                             + chatOutput.innerHTML;
+    chatInput.onChange = function(e) {
+        channel.send(this.files[0]);
+        chatOutput.innerHTML = 'sending file..';
         this.value = '';
     };
 </script>
